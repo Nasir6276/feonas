@@ -16,6 +16,7 @@ import {
   Badge,
   Container,
   Burger,
+  Title,
 } from "@mantine/core";
 
 import { IconLogout, IconSearch, IconSettings } from "@tabler/icons-react";
@@ -122,16 +123,14 @@ export default function Header() {
   }, [user]);
 
   return (
-    <Container size={1200} h="100%">
+    <Container size={1500} h="100%">
       <Paper py={"md"} bg="transparent">
         <Flex w={"100%"} align={"center"} justify={"space-between"}>
           <Flex gap={20} align={"center"} h="100%">
-            <Link href={"http://localhost:8090/"}>
-              <Burger color="#195874" />
-            </Link>
             <Link href={"/"}>
               <Image src={NILDS.src} h={26} w={28} fit="contain" alt="logo" />
             </Link>
+            <Title order={1}>FEONAS</Title>
           </Flex>
 
           <Group>

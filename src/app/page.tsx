@@ -1,10 +1,26 @@
-import useNotification from "@/hooks/useNotification";
+import useNotification from "@/lib/hooks/useNotification";
 import withLayout from "@/layouts/appLayout";
 import CardContainer from "@/views/Card";
 import CardDesign from "@/views/Card";
 import ShowToast from "@/views/showToast";
-import { Center, Container, SimpleGrid, Text, Title } from "@mantine/core";
+import {
+  Button,
+  Center,
+  Container,
+  FileInput,
+  Flex,
+  Group,
+  Input,
+  SimpleGrid,
+  Stack,
+  Text,
+  TextInput,
+  Title,
+} from "@mantine/core";
 import axios from "axios";
+
+import { IoMdCloudUpload } from "react-icons/io";
+import Link from "next/link";
 
 type Post = {
   userId: number;
@@ -14,16 +30,79 @@ type Post = {
 };
 
 async function Home() {
-  const posts = await axios.get("https://jsonplaceholder.typicode.com/posts");
-
+  const iconBox = (
+    <Group justify="center" bg={"#F3F2F2"} w={"105px"} h={"100%"}>
+      <IoMdCloudUpload
+        style={{ width: "20px", height: "20px", color: "#195874" }}
+      />
+    </Group>
+  );
   return (
-    <Container size={1200}>
-      <Title my={30}>Welcome to Server Side Rendering</Title>
-      <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }}>
-        {posts.data.map((post: Post, index: number) => (
-          <CardDesign key={index} {...post} />
-        ))}
-      </SimpleGrid>
+    <Container size={1500}>
+      <Flex align={"center"} justify={"center"} h={"100vh"}>
+        <Stack p={"32px"} bg={"#ffffff"} w={"550px"} gap={"xs"}>
+          <Text fw={700} fz={24} c={"#000000"} ta={"center"}>
+            Create Your Account
+          </Text>
+          <Text fw={500} fz={16} c={"#000000"} ta={"center"}>
+            We recommend you use your work email.
+          </Text>
+          <Group justify="space-between" gap="sm" grow my={"10px"}>
+            <TextInput
+              radius="xs"
+              label="First Name"
+              placeholder="Enter first name"
+            />
+            <TextInput
+              radius="xs"
+              label="Last Name"
+              placeholder="Enter last name"
+            />
+          </Group>
+          <TextInput
+            radius="xs"
+            label="Country Short"
+            placeholder="Enter country short"
+          />
+          <TextInput radius="xs" label="ID Type" placeholder="Enter ID type" />
+          <FileInput
+            label="ID File"
+            rightSection={iconBox}
+            size="sm"
+            radius="xs"
+            accept="image/png,image/jpeg"
+            placeholder="Upload a photo, PNG or JPEG; Max size: 500kb"
+            rightSectionPointerEvents="none"
+          />
+          <TextInput
+            radius="xs"
+            label="POA Type"
+            placeholder="Enter POA type"
+          />
+          <FileInput
+            label="POA File"
+            rightSection={iconBox}
+            size="sm"
+            radius="xs"
+            accept="image/png,image/jpeg"
+            placeholder="Upload a photo, PNG or JPEG; Max size: 500kb"
+            rightSectionPointerEvents="none"
+          />
+          <Button
+            // type="submit"
+            radius={"xs"}
+            size="md"
+            fw={500}
+            fz={"12"}
+            style={{ border: "1px solid #40845F" }}
+            component={Link}
+            href={"/debit-request"}
+            my={"lg"}
+          >
+            Submit
+          </Button>
+        </Stack>
+      </Flex>
     </Container>
   );
 }
