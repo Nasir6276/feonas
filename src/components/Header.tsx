@@ -134,59 +134,6 @@ export default function Header() {
           </Flex>
 
           <Group>
-            <Group className={classes.icon_container}>
-              <Badge
-                variant="transparent"
-                tt="capitalize"
-                color="#4B4B4B"
-                px={0}
-                fz={12}
-                fw={500}
-                leftSection={
-                  <ThemeIcon variant="transparent" color="#4B4B4B" size={15}>
-                    <IconSettings />
-                  </ThemeIcon>
-                }
-              >
-                Settings
-              </Badge>
-              <Badge
-                variant="transparent"
-                tt="capitalize"
-                color="#4B4B4B"
-                px={0}
-                fz={12}
-                fw={500}
-                leftSection={
-                  <ThemeIcon variant="transparent" color="#4B4B4B" size={15}>
-                    <FaRegCircleQuestion />
-                  </ThemeIcon>
-                }
-              >
-                Help
-              </Badge>
-
-              <Box
-                component={Link}
-                href={"/notification"}
-                className={classes.icon_size}
-              >
-                <Indicator
-                  label={notifications.length}
-                  inline
-                  size={25}
-                  radius="xl"
-                  offset={1}
-                  withBorder
-                  bg="transparent"
-                >
-                  <ThemeIcon variant="transparent">
-                    <BsBell />
-                  </ThemeIcon>
-                </Indicator>
-              </Box>
-            </Group>
-
             <Menu
               width={260}
               position="bottom-end"
