@@ -27,35 +27,41 @@ const DebitRequest = () => {
             radius="xs"
             label="Account"
             placeholder="Enter Account"
+            required
           />
           <TextInput
             my={"5px"}
             radius="xs"
             label="Amount"
             placeholder="Enter Amount"
+            required
           />
           <TextInput
             my={"5px"}
             radius="xs"
             label="Destination IBAN"
             placeholder="Enter Destination IBAN"
+            required
           />
           <TextInput
             my={"5px"}
             radius="xs"
             label="Destination BIC"
             placeholder="Enter Destination BIC"
+            required
           />
           <Group justify="space-between" gap="sm" grow>
             <TextInput
               radius="xs"
               label="Destination Country"
               placeholder="Enter Destination Country"
+              required
             />
             <TextInput
               radius="xs"
               label="Destination Bank"
               placeholder="Enter Destination Bank"
+              required
             />
           </Group>
           <Group justify="space-between" gap="sm" grow>
@@ -63,8 +69,14 @@ const DebitRequest = () => {
               radius="xs"
               label="Reference"
               placeholder="Enter Reference"
+              required
             />
-            <TextInput radius="xs" label="Reason" placeholder="Enter Reason" />
+            <TextInput
+              radius="xs"
+              label="Reason"
+              placeholder="Enter Reason"
+              required
+            />
           </Group>
           <Button
             // type="submit"

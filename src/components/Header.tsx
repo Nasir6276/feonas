@@ -28,7 +28,7 @@ import classes from "@/styles/components/header.module.scss";
 import useNotification from "@/lib/hooks/useNotification";
 
 import User from "@/lib/store/user.store";
-import NILDS from "@/assets/logo-app.png";
+import NILDS from "@/assets/logo-app.jpg";
 import Link from "next/link";
 
 import axios from "axios";
@@ -128,7 +128,7 @@ export default function Header() {
         <Flex w={"100%"} align={"center"} justify={"space-between"}>
           <Flex gap={20} align={"center"} h="100%">
             <Link href={"/"}>
-              <Image src={NILDS.src} h={26} w={28} fit="contain" alt="logo" />
+              <Image src={NILDS.src} h={36} w={38} fit="contain" alt="logo" />
             </Link>
             <Title order={1}>FEONAS</Title>
           </Flex>
