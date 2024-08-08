@@ -1,6 +1,7 @@
 "use client";
 
 import withLayout from "@/layouts/appLayout";
+import Logo from "@/assets/logo-app.jpg";
 import {
   Box,
   Button,
@@ -8,6 +9,8 @@ import {
   FileInput,
   Flex,
   Group,
+  Image,
+  MultiSelect,
   Stack,
   Tabs,
   Text,
@@ -41,11 +44,11 @@ const Dashboard = () => {
           <Tabs.Panel value="createAccount">
             <Flex align={"center"} justify={"center"} h={"100%"}>
               <Stack p={"32px"} bg={"#ffffff"} w={"550px"} gap={"xs"}>
+                <Flex align={"center"} justify={"center"} h={"100%"}>
+                  <Image alt="logo" src={Logo.src} h={36} w={38} />
+                </Flex>
                 <Text fw={700} fz={24} c={"#000000"} ta={"center"}>
                   Create Your Account
-                </Text>
-                <Text fw={500} fz={16} c={"#000000"} ta={"center"}>
-                  We recommend you use your work email.
                 </Text>
                 <Group justify="space-between" gap="sm" grow my={"10px"}>
                   <TextInput
@@ -67,11 +70,16 @@ const Dashboard = () => {
                   placeholder="Enter country short"
                   required
                 />
-                <TextInput
+                <MultiSelect
                   radius="xs"
                   label="ID Type"
-                  placeholder="Enter ID type"
-                  required
+                  placeholder="Select ID type"
+                  data={[
+                    "Passport",
+                    "Identity Card",
+                    "Driving License",
+                    "Residence Permit",
+                  ]}
                 />
                 <FileInput
                   label="ID File"
@@ -83,11 +91,11 @@ const Dashboard = () => {
                   rightSectionPointerEvents="none"
                   required
                 />
-                <TextInput
+                <MultiSelect
                   radius="xs"
                   label="POA Type"
-                  placeholder="Enter POA type"
-                  required
+                  placeholder="Select POA type"
+                  data={["Bank Statement", "Utility Bill"]}
                 />
                 <FileInput
                   label="POA File"
@@ -118,11 +126,11 @@ const Dashboard = () => {
           <Tabs.Panel value="requestPayment">
             <Flex align={"center"} justify={"center"} h={"100%"}>
               <Stack p={"32px"} bg={"#ffffff"} w={"550px"} gap={"xs"}>
+                <Flex align={"center"} justify={"center"} h={"100%"}>
+                  <Image alt="logo" src={Logo.src} h={36} w={38} />
+                </Flex>
                 <Text fw={700} fz={24} c={"#000000"} ta={"center"}>
                   Request Payout
-                </Text>
-                <Text fw={500} fz={16} c={"#000000"} ta={"center"}>
-                  Input the neccessary account details
                 </Text>
                 <TextInput
                   my={"5px"}

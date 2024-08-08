@@ -9,14 +9,14 @@ import "@/styles/globals.scss";
 import { ColorSchemeScript, MantineProvider, createTheme } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { colors } from "@/theme/colors";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 
 export const metadata = {
   title: "Template",
   description: "I have followed setup instructions carefully",
 };
 
-const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"] });
+const dmSans = DM_Sans({ subsets: ["latin"], display: "swap" });
 
 export default function RootLayout({
   children,
@@ -34,7 +34,7 @@ export default function RootLayout({
     },
     primaryColor: "secondary",
     primaryShade: 9,
-    fontFamily: plusJakartaSans.style.fontFamily,
+    fontFamily: dmSans.style.fontFamily,
   });
   return (
     <html lang="en">
