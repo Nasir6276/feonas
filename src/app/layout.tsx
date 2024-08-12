@@ -41,7 +41,7 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body style={{ backgroundColor: "#F3F5F7" }}>
+      <body style={{ backgroundColor: "#FFF" }}>
         <MantineProvider theme={theme}>
           <Notifications position="top-center" limit={1} />
           {children}

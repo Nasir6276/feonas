@@ -6,136 +6,129 @@ import {
   Button,
   Container,
   Flex,
+  Group,
+  Image,
   PasswordInput,
   Stack,
   Text,
   TextInput,
 } from "@mantine/core";
-import { useForm, zodResolver } from "@mantine/form";
-import axios from "axios";
+import { FaRegEnvelope } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
-import { z } from "zod";
+import React, { useState, ChangeEvent, FormEvent } from "react";
+import sideImage from "@/assets/sideImage.jpeg";
+import { CiLock } from "react-icons/ci";
 
 const Login = () => {
   const { handleError, handleSuccess } = useNotification();
   const [visible, setVisible] = useState(false);
   const { push } = useRouter();
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  //   const User = z.object({
-  //     email: z
-  //       .string()
-  //       .email({ message: "Invalid email address" })
-  //       .min(1, "Email is required"),
-  //     password: z.string().min(1, {
-  //       message:
-  //         "Your password should be: 8+ characters, with uppercase and lowercase letters, numbers, and special characters.",
-  //     }),
-  //   });
+  const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
+  };
 
-  //   type UserType = z.infer<typeof User>;
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
 
-  //   const form = useForm<UserType>({
-  //     initialValues: {
-  //       email: "",
-  //       password: "",
-  //     },
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setVisible(true);
 
-  //     validate: zodResolver(User),
-  //   });
+    const defaultUsername = "feonas@gmail.com";
+    const defaultPassword = "Feonas2024";
 
-  //  const handleSubmit = async () => {
-  //    setVisible(true);
-  //    try {
-  //      const { email, password } = form.values;
-  //      const { data: res } = await axios.post(`${auth}/auth/login`, {
-  //        email,
-  //        password,
-  //      });
+    setTimeout(() => {
+      if (username === defaultUsername && password === defaultPassword) {
+        handleSuccess("Login successful", "Admin has successfuly signed in");
+        push("/dashboard");
+      } else {
+        handleError("Login failed", "Wrong credentials");
+      }
+      setVisible(false);
+    }, 500);
+  };
 
-  //      Cookies.set("logToken", res.data.token);
-  //      console.log(res.data.token);
-  //      push("/");
-  //      handleSuccess("Login successful", "Admin has successfully signed in");
-  //    } catch (error) {
-  //      if (isAxiosError(error))
-  //        return handleError("Login failed", error.response?.data.message);
-  //      return handleError("Login failed", "An error occurred");
-  //    } finally {
-  //      setVisible(false);
-  //    }
-  //  };
+  const emailIcon = (
+    <Group justify="center" bg={"#FFF"}>
+      <FaRegEnvelope />
+    </Group>
+  );
+  const passIcon = (
+    <Group justify="center" bg={"#FFF"}>
+      <CiLock />
+    </Group>
+  );
 
   return (
     <Container size={1500}>
-      <Flex align={"center"} justify={"center"} bg={"#F3F5F7"} h={"100vh"}>
-        <Flex align={"center"} justify={"center"} bg={"#F3F5F7"} h={"100vh"}>
-          <Stack p={"40px 32px"} bg={"#fff"} w={"520px"} gap={"32px"}>
-            <Flex align={"center"} justify={"center"}>
-              <Stack gap={"xs"}>
-                <Text fw={500} fz={24} ta={"center"}>
-                  Log In
-                </Text>
-                <Text fw={500} fz={12} c={"#807F7F"} ta={"center"}>
-                  Input your details to have access to your account.
-                </Text>
-              </Stack>
-            </Flex>
-            <Box
-              component="form"
-              //   onSubmit={form.onSubmit(() => handleSubmit())}
-            >
-              <Stack>
-                <TextInput
-                  size="md"
-                  placeholder="Enter email address"
-                  radius={"xs"}
-                  mt={"8px"}
-                  label="Email address"
-                />
-                <PasswordInput
-                  size="md"
-                  radius="xs"
-                  label="Password"
-                  placeholder="Enter password"
-                  fz={1}
-                  fw={500}
-                />
-                <Text fw={500} fz={12} c={"#133D51"}>
-                  Forgotten your password? Reset now
-                </Text>
-                <Button
-                  variant="filled"
-                  bg={"#195874"}
-                  radius={"xs"}
-                  size="md"
-                  fw={500}
-                  fz={12}
-                  // type="submit"
-                  component={Link}
-                  href={"/dashboard"}
-                >
-                  Log In
-                </Button>
-              </Stack>
-            </Box>
-            <Text
-              ta={"center"}
-              fw={500}
-              fz={12}
-              style={{ cursor: "pointer" }}
-              // component={Link}
-              // href={"/sign-up"}
-            >
-              Don&apos;t have an account?{" "}
-              <span style={{ color: "#195874", fontWeight: "bold" }}>
-                Register now
-              </span>
-            </Text>
-          </Stack>
-        </Flex>
-      </Flex>
+      <Group bg={"#FFF"} h={"100vh"} p={"20px"} grow>
+        <Box p={"lg"} h={"100%"}>
+          <Image
+            radius={"xl"}
+            src={sideImage.src}
+            alt="sideImage"
+            height={"100%"}
+            w={"100%"}
+          />
+        </Box>
+        <Box>
+          <Flex align={"center"} justify={"center"} h={"100vh"}>
+            <Stack p={"40px 32px"} bg={"#fff"} w={"520px"} gap={"32px"}>
+              <Flex align={"center"} justify={"center"}>
+                <Stack gap={"xs"}>
+                  <Text fw={700} fz={24} ta={"center"}>
+                    Log In
+                  </Text>
+                  <Text fw={500} fz={12} c={"#807F7F"} ta={"center"}>
+                    Input your details to have access to your account.
+                  </Text>
+                </Stack>
+              </Flex>
+              <Box component="form" onSubmit={handleSubmit}>
+                <Stack>
+                  <TextInput
+                    leftSection={emailIcon}
+                    radius={"md"}
+                    size="lg"
+                    placeholder="Enter email address"
+                    mt={"8px"}
+                    label="Email address"
+                    value={username}
+                    onChange={handleUsernameChange}
+                  />
+                  <PasswordInput
+                    leftSection={emailIcon}
+                    radius={"md"}
+                    size="lg"
+                    label="Password"
+                    placeholder="Enter password"
+                    fz={1}
+                    fw={500}
+                    value={password}
+                    onChange={handlePasswordChange}
+                  />
+                  <Button
+                    variant="gradient"
+                    gradient={{ from: "violet", to: "cyan", deg: 90 }}
+                    radius={"md"}
+                    size="lg"
+                    fw={600}
+                    fz={12}
+                    type="submit"
+                  >
+                    Log In
+                  </Button>
+                </Stack>
+              </Box>
+            </Stack>
+          </Flex>
+        </Box>
+      </Group>
     </Container>
   );
 };

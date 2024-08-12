@@ -17,6 +17,7 @@ import {
   Container,
   Burger,
   Title,
+  Button,
 } from "@mantine/core";
 
 import { IconLogout, IconSearch, IconSettings } from "@tabler/icons-react";
@@ -134,7 +135,8 @@ export default function Header() {
           </Flex>
 
           <Group>
-            <Menu
+            <Button>Log Out</Button>
+            {/* <Menu
               width={260}
               position="bottom-end"
               transitionProps={{ transition: "pop-top-right" }}
@@ -152,7 +154,6 @@ export default function Header() {
               </Menu.Target>
 
               <Menu.Dropdown mt={15}>
-                {/* <Link href="#"> */}
                 <Menu.Item
                   component={Link}
                   href={`/people/${user?.id}`}
@@ -162,7 +163,6 @@ export default function Header() {
                     {user?.firstName} {user?.lastName}
                   </Text>
                 </Menu.Item>
-                {/* </Link> */}
 
                 <Menu.Label>Settings</Menu.Label>
 
@@ -183,7 +183,7 @@ export default function Header() {
                   Logout
                 </Menu.Item>
               </Menu.Dropdown>
-            </Menu>
+            </Menu> */}
           </Group>
         </Flex>
       </Paper>

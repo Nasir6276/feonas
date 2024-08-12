@@ -34,7 +34,7 @@ export default function withLayout(
         header={{ height: 70, offset: true, collapsed: false }}
         padding="md"
       >
-        <AppShellHeader withBorder={false} bg="#F3F5F7">
+        <AppShellHeader withBorder={false} bg="#FFF">
           <Header />
         </AppShellHeader>
 
