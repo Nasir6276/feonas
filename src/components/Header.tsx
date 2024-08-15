@@ -135,7 +135,16 @@ export default function Header() {
           </Flex>
 
           <Group>
-            <Button>Log Out</Button>
+            <Button
+              variant="gradient"
+              gradient={{ from: "violet", to: "cyan", deg: 90 }}
+              radius={"xl"}
+              size="lg"
+              fw={600}
+              fz={12}
+            >
+              Log Out
+            </Button>
             {/* <Menu
               width={260}
               position="bottom-end"

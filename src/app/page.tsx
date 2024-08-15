@@ -2,6 +2,7 @@
 
 import useNotification from "@/lib/hooks/useNotification";
 import {
+  BackgroundImage,
   Box,
   Button,
   Container,
@@ -12,6 +13,7 @@ import {
   Stack,
   Text,
   TextInput,
+  Title,
 } from "@mantine/core";
 import { FaRegEnvelope } from "react-icons/fa";
 import Link from "next/link";
@@ -68,13 +70,42 @@ const Login = () => {
     <Container size={1500}>
       <Group bg={"#FFF"} h={"100vh"} p={"20px"} grow>
         <Box p={"lg"} h={"100%"}>
-          <Image
+          <BackgroundImage
+            radius={"xl"}
+            src={sideImage.src}
+            h={"100%"}
+            w={"100%"}
+          >
+            <Stack h={"100%"} p={"lg"} justify="space-between">
+              <Title order={1} c={"#fff"}>
+                FEONAS
+              </Title>
+              <Stack>
+                <Title order={3} c={"#fff"}>
+                  Stream Your Movies Here
+                </Title>
+                <Text size="md" c={"#fff"}>
+                  We are a streaming service and we provide you the ability to
+                  provide and upload your movies, series, documentaries, animes,
+                  sports and other forms of entertainment. You can also pay to
+                  gain access to other use content, using a subscription based
+                  payment. You would have your own account, where you would be
+                  able to access all these features and enjoy your form of
+                  entertainment.
+                </Text>
+              </Stack>
+              <Text c={"#fff"} ta={"center"}>
+                Copyright © 2024 FEONAS, Inc.
+              </Text>
+            </Stack>
+          </BackgroundImage>
+          {/* <Image
             radius={"xl"}
             src={sideImage.src}
             alt="sideImage"
             height={"100%"}
             w={"100%"}
-          />
+          /> */}
         </Box>
         <Box>
           <Flex align={"center"} justify={"center"} h={"100vh"}>
@@ -111,11 +142,12 @@ const Login = () => {
                     fw={500}
                     value={password}
                     onChange={handlePasswordChange}
+                    mb={"lg"}
                   />
                   <Button
                     variant="gradient"
                     gradient={{ from: "violet", to: "cyan", deg: 90 }}
-                    radius={"md"}
+                    radius={"xl"}
                     size="lg"
                     fw={600}
                     fz={12}
