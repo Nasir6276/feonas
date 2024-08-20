@@ -19,9 +19,6 @@ import {
 import Link from "next/link";
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import { IoMdCloudUpload } from "react-icons/io";
-import { z } from "zod";
-import { useForm, zodResolver } from "@mantine/form";
-import axios, { isAxiosError } from "axios";
 import useNotification from "@/lib/hooks/useNotification";
 import { auth, token } from "@/constant/url";
 
@@ -289,15 +286,13 @@ const TabsSection = () => {
                     required
                   />
                   <Button
-                    // type="submit"
+                    type="submit"
                     variant="gradient"
                     gradient={{ from: "violet", to: "cyan", deg: 90 }}
                     radius={"xl"}
                     size="lg"
                     fw={600}
                     fz={12}
-                    component={Link}
-                    href={"/"}
                     my={"lg"}
                     fullWidth
                   >
