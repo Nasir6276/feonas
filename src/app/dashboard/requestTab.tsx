@@ -11,7 +11,7 @@ import {
   TextInput,
 } from "@mantine/core";
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { debit } from "@/constant/url";
+import { debit, token } from "@/constant/url";
 
 interface DisburseFunds {
   amount: number;
@@ -95,7 +95,7 @@ const RequestTab = () => {
       const response = await fetch(`${debit}/v1/payout/send`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer sk_live_VwXRpCCdvw9EDC4KjNUJiUOqNsfEJN30wDI9TfoWzRa_763E4CasmYNHL97VmrNC`,
+          Authorization: `Bearer ${token}`,
           "Content-type": "application/json",
         },
         body: JSON.stringify(data),
@@ -129,7 +129,7 @@ const RequestTab = () => {
       const response = await fetch(`${debit}/v1/payout/disburse`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer sk_live_VwXRpCCdvw9EDC4KjNUJiUOqNsfEJN30wDI9TfoWzRa_763E4CasmYNHL97VmrNC`,
+          Authorization: `Bearer ${token}`,
           "Content-type": "application/json",
         },
         body: JSON.stringify(data),

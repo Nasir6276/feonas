@@ -23,7 +23,7 @@ import { z } from "zod";
 import { useForm, zodResolver } from "@mantine/form";
 import axios, { isAxiosError } from "axios";
 import useNotification from "@/lib/hooks/useNotification";
-import { auth } from "@/constant/url";
+import { auth, token } from "@/constant/url";
 
 interface UserData {
   firstName: string;
@@ -123,7 +123,7 @@ const TabsSection = () => {
       const response = await fetch(`${auth}/request-account`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer sk_live_VwXRpCCdvw9EDC4KjNUJiUOqNsfEJN30wDI9TfoWzRa_763E4CasmYNHL97VmrNC`,
+          Authorization: `Bearer ${token}`,
         },
         body: data,
       });
@@ -158,7 +158,7 @@ const TabsSection = () => {
       const response = await fetch(`${auth}/request-corporate-account`, {
         method: "POST",
         headers: {
-          Authorization: `Bearer sk_live_VwXRpCCdvw9EDC4KjNUJiUOqNsfEJN30wDI9TfoWzRa_763E4CasmYNHL97VmrNC`,
+          Authorization: `Bearer ${token}`,
         },
         body: data,
       });
